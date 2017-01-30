@@ -5,7 +5,7 @@
     <form (submit)="searchMovies()">
       <div class="form-group">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search for movies..." [(ngModel)]="searchStr" name="searchStr">
+          <input type="text" class="form-control" placeholder="Søg efter film ..." [(ngModel)]="searchStr" name="searchStr" (enter)="searchMovies()">
           <span class="input-group-btn">
             <button class="btn btn-primary" type="submit">Søg</button>
           </span>
@@ -27,7 +27,7 @@
             <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="" *ngIf="movie.poster_path" class="thumbnail">
             <h4>{{movie.title}}</h4>
             <p>{{movie.release_date}}</p>
-            <p><a href="" class="btn btn-default">Se detajler &raquo;</a></p>
+            <p><a routerLink="/movie/{{movie.id}}" class="btn btn-default">Se detajler &raquo;</a></p>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
           <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="" *ngIf="movie.poster_path" class="thumbnail">
           <h4>{{movie.title}}</h4>
           <p>{{movie.release_date}}</p>
-          <p><a href="" class="btn btn-default">View details &raquo;</a></p>
+          <p><a routerLink="/movie/{{movie.id}}" class="btn btn-default">Se detajler &raquo;</a></p>
         </div>
       </div>
     </div>
@@ -64,7 +64,7 @@
           <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="" *ngIf="movie.poster_path" class="thumbnail">
           <h4>{{movie.title}}</h4>
           <p>{{movie.release_date}}</p>
-          <p><a href="" class="btn btn-default">View details &raquo;</a></p>
+          <p><a routerLink="/movie/{{movie.id}}" class="btn btn-default">Se detajler &raquo;</a></p>
         </div>
       </div>
     </div>
