@@ -1,3 +1,4 @@
+import { getHeapStatistics } from 'v8';
 import { Injectable } from '@angular/core';
 import {Jsonp, URLSearchParams} from '@angular/http';
 import 'rxjs/Rx';
@@ -33,7 +34,16 @@ export class MoviesService {
       })
   }
 
-    searchMovies(searchStr: string) {
+  getMovie(id: string) {
+    var search = new URLSearchParams();
+    search.set('api_key', this.apikey);
+    return this._jsonp.get('https://api.themoviedb.org/3/discover/movie?callback=JSONP_CALLBACK', {search})
+      .map(res => {
+        return res.json();
+      })
+  }
+
+  searchMovies(searchStr: string) {
     var search = new URLSearchParams();
     search.set('sort_by','popularity.desc');
     search.set('query', searchStr);
